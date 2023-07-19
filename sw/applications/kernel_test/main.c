@@ -75,13 +75,13 @@
 /****************************************************************************/
 
 static kcom_kernel_t *kernels[] = {
-        &strs_kernel,
+        &strs_kernel, //not working
         &bitc_kernel,
         &sha2_kernel,
-        //&sqrt_kernel,
-        //&gsm_kernel,
-        //&sha_kernel,
-        //&reve_kernel,
+        &sqrt_kernel,
+        &gsm_kernel,
+        &sha_kernel,
+        &reve_kernel,
         // Add all other kernels here
     };
 
@@ -118,6 +118,9 @@ void main()
         uint8_t kernel_id = ( ker_idx % (CGRA_KMEM_SIZE - 1) ) + 1; // Must be between 1 and (KMEM_SIZE - 1).
         kernel->kmem[ kernel_id ] = kernel->kmem[1]; // By default the kernels come located with id = 1.
         // The kernel = 1 is kept, so we can always take it from there.
+
+        PRINTF(" %s\n", stats.name );
+
 
         /* CGRA load */
 #if ANALYZE_EVERYTHING
@@ -185,9 +188,9 @@ void main()
         /* Get statistical values from the whole set of runs for this kernel. */
         kcom_getKernelStats( &run, &stats );
         kcom_printKernelStats( &stats );
+        kcom_printSummary( &stats );
 
     }
-    kcom_printSummary( &stats );
 
     return 0;
 }
