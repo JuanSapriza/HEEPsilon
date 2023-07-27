@@ -154,8 +154,6 @@ void handler_irq_external(void) {
         kcom_perfRecordStop( cgraPerf );
         cgra_intr_flag = 1;
     }
-    else{
-    }
 
     // Complete the interrupt
     plic_res = dif_plic_irq_complete(&rv_plic, 0, &intr_num);

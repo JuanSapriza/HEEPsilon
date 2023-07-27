@@ -138,7 +138,11 @@ void main()
 
             /* Load (of inputs). */
 #if REPEAT_FIRST_INPUT
-            if( it_idx < 2 ) kcom_resetRand();
+            if( it_idx < 2 )
+            {
+                kcom_newVCDfile();
+                kcom_resetRand();
+            }
 #endif //REPEAT_FIRST_INPUT
             kernel->config();
 
