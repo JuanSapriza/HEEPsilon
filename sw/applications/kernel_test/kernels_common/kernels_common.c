@@ -163,6 +163,12 @@ void handler_irq_external(void) {
 }
 
 /* MISCELANEOUS */
+/*
+   32-bits Random number generator U[0,1): lfsr113
+   Author: Pierre L'Ecuyer,
+   Source: http://www.iro.umontreal.ca/~lecuyer/myftp/papers/tausme2.ps
+   ---------------------------------------------------------
+*/
 
 uint32_t kcom_getRand()
 {
