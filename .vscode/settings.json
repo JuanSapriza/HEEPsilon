@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "cgra_x_heep.h": "c",
+        "cgra.h": "c",
+        "reversebits.h": "c",
+        "kernels_common.h": "c",
+        "hart.h": "c",
+        "function.h": "c",
+        "gsm.h": "c",
+        "handler.h": "c",
+        "stimuli.h": "c",
+        "*.inc": "c"
+    }
+}
