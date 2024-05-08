@@ -9,7 +9,10 @@ mkfile_path := $(shell dirname "$(realpath $(firstword $(MAKEFILE_LIST)))")
 
 # Include the self-documenting tool
 FILE=$(mkfile_path)/Makefile
-include $(mkfile_path)/util/generate-makefile-help
+export FILE_FOR_HELP=${FILE}
+
+help:
+	${mkfile_path}/util/MakefileHelp
 
 # Setup to autogenerate python virtual environment
 VENVDIR?=$(WORKDIR)/.venv
