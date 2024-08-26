@@ -51,7 +51,7 @@
 /****************************************************************************/
 
 /* Operation Configurations */
-#define ENABLE_PRINTF           1
+#define ENABLE_PRINTF           0
 #define ENABLE_DEBUG_PRINTF     0
 
 #define PRINT_ITERATION_VALUES  0
@@ -63,7 +63,7 @@
 #define PRINT_RESULTS           0
 #define PRINT_CGRA_RESULTS      0
 
-#define REPEAT_FIRST_INPUT      1
+#define REPEAT_FIRST_INPUT      0
 
 #define WATCHDOG_CYCLES         100000
 
@@ -77,13 +77,13 @@
 
 #define PERFORM_RES_CHECK       1
 
-#define CTRL_VCD_W_PIN          0
+#define CTRL_VCD_W_PIN          1
 #define ENABLE_TIME_MEASURE     1
 
 #define PIN_TO_CTRL_VCD         20   // In sync w/ hardware, do not change
 #define PIN_TO_NEW_VCD          21
 
-#define ITERATIONS_PER_KERNEL   10
+#define ITERATIONS_PER_KERNEL   2
 #define PERF_PLOT_SCALE_DOWN    5
 
 

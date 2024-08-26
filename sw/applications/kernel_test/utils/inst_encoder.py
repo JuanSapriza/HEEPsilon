@@ -136,10 +136,10 @@ CGRA_IMEM_WIDTH = RCS_MUXA_BITS+RCS_MUXB_BITS+RCS_ALU_OP_BITS+RCS_RF_WADD_BITS+R
 muxA_list     = ['ZERO', 'SELF', 'RCL', 'RCR', 'RCT', 'RCB',  'R0', 'R1', 'R2', 'R3', 'IMM']
 muxB_list     = ['ZERO', 'SELF', 'RCL', 'RCR', 'RCT', 'RCB',  'R0', 'R1', 'R2', 'R3', 'IMM']
 
-ALU_op_list   = ['NOP', 
-                 'SADD', 'SSUB', 'SMUL', 'FXPMUL', 
+ALU_op_list   = ['NOP',
+                 'SADD', 'SSUB', 'SMUL', 'FXPMUL',
                  'SLT', 'SRT', 'SRA',
-                 'LAND', 'LOR', 'LXOR', 'LNAND', 'LNOR', 'LXNOR', 
+                 'LAND', 'LOR', 'LXOR', 'LNAND', 'LNOR', 'LXNOR',
                  'BSFA', 'BZFA',
                  'BEQ', 'BNE', 'BLT', 'BGE', 'JUMP',
                  'LWD', 'SWD', 'LWI', 'SWI',
@@ -171,13 +171,13 @@ if len(sys.argv) != 3 :
     sys.exit("[ERROR] Incomplete data. Please provide a kernel path (<<..../kernel_name>>) and CGRA dimension (<<CxR>>).")
 
 # Get the path to the kernel from the input of the command
-KER_PATH = sys.argv[1] # e.g. "../kernels/this_kernel/" 
+KER_PATH = sys.argv[1] # e.g. "../kernels/this_kernel/"
 if KER_PATH[-1] == "/":
     # Extract the kernel name
     KER_NAME = KER_PATH[ KER_PATH.rfind("/") +1 :-1 ] # e.g. "this_kernel"
 else:
     KER_NAME = KER_PATH[ KER_PATH.rfind("/") +1 :] # e.g. "this_kernel"
-    KER_PATH = KER_PATH + "/"    
+    KER_PATH = KER_PATH + "/"
 
 # Get the desired dimension
 DIMENSION = sys.argv[2] # e.g. "3x3"
@@ -188,7 +188,7 @@ DATA_DIR = KER_PATH + "/" + DIMENSION + "/"
 # Obtain the number of columns and row independently
 CGRA_N_COL, CGRA_N_ROW = [int(s) for s in DIMENSION if s.isdigit() ]
 
-# The file where the bitstreams will be stored 
+# The file where the bitstreams will be stored
 BITSTREAMS_PATH = DATA_DIR + 'bitstreams'
 OUT_SAT_PATH    = DATA_DIR + 'out.sat'
 
@@ -279,9 +279,9 @@ with open(BITSTREAMS_PATH, 'w') as f:
 
 
 
-exec(open("io_gen.py").read())
+# exec(open("io_gen.py").read())
 
-exec(open("heeptest_gen.py").read())
+# exec(open("heeptest_gen.py").read())
 
 
 #####################################################################################

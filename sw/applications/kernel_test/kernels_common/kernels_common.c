@@ -454,11 +454,14 @@ void kcom_load( kcom_kernel_t *ker )
     // Select request slot of CGRA
     cgra_slot = cgra_get_slot(&cgra);
     cgra_perf_cnt_enable(&cgra, 1);
-    // Set CGRA kernel L/S pointers
-    for(int8_t col_idx = 0 ; col_idx < ker->col_n ; col_idx++){
-        cgra_set_read_ptr ( &cgra, cgra_slot, (uint32_t)&((ker->input[0]))  + (col_idx * ker->in_n  * sizeof(uint32_t) ),  col_idx );
-        cgra_set_write_ptr( &cgra, cgra_slot, (uint32_t)&((ker->output[0])) + (col_idx * ker->out_n * sizeof(uint32_t) ),  col_idx );
-    }
+
+    /** NO LONGER NEEDED WITH COMPIGRA
+    *** // Set CGRA kernel L/S pointers
+    *** for(int8_t col_idx = 0 ; col_idx < ker->col_n ; col_idx++){
+    ***     cgra_set_read_ptr ( &cgra, cgra_slot, (uint32_t)&((ker->input[0]))  + (col_idx * ker->in_n  * sizeof(uint32_t) ),  col_idx );
+    ***     cgra_set_write_ptr( &cgra, cgra_slot, (uint32_t)&((ker->output[0])) + (col_idx * ker->out_n * sizeof(uint32_t) ),  col_idx );
+    *** }
+    */
 }
 
 void kcom_rstPerfCounter()
@@ -500,14 +503,27 @@ inline __attribute__((always_inline)) void pinLow( uint8_t pin )
 void pinInit()
 {
 #if CTRL_VCD_W_PIN
+    // gpio_result_t gpio_res;
+    // gpio_params_t gpio_params;
+    // pad_control_t pad_control;
+
     gpio_result_t gpio_res;
-    gpio_params_t gpio_params;
-    pad_control_t pad_control;
+    gpio_cfg_t pin_cfg_vcd = {
+        .pin = PIN_TO_CTRL_VCD,
+        .mode = GpioModeOutPushPull
+    };
+    gpio_res = gpio_config (pin_cfg_vcd);
 
-    gpio_config (pin_cfg_ctrl_vcd);
-    gpio_config (pin_cfg_new_vcd);
+    gpio_cfg_t pin_cfg_vcd_new = {
+        .pin = PIN_TO_NEW_VCD,
+        .mode = GpioModeOutPushPull
+    };
+    gpio_res = gpio_config (pin_cfg_vcd_new);
 
-    pad_control_set_mux(&pad_control, (ptrdiff_t)(PAD_CONTROL_PAD_MUX_I2C_SDA_REG_OFFSET), 1);
+    // gpio_config (pin_cfg_ctrl_vcd);
+    // gpio_config (pin_cfg_new_vcd);
+
+    // pad_control_set_mux(&pad_control, (ptrdiff_t)(PAD_CONTROL_PAD_MUX_I2C_SDA_REG_OFFSET), 1);
 #endif
 }
 

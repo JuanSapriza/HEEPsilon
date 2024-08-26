@@ -24,7 +24,7 @@ MEMORY
   ram1 (rwxai) : ORIGIN = 0x${linker_onchip_data_start_address}, LENGTH = 0x${linker_onchip_data_size_address}
 % if ram_numbanks_cont > 1 and ram_numbanks_il > 0:
   ram_il (rwxai) : ORIGIN = 0x${linker_onchip_il_start_address}, LENGTH = 0x${linker_onchip_il_size_address}
-% endif  
+% endif
 }
 
 /*
@@ -44,6 +44,10 @@ SECTIONS
 
   /* Read-only sections, merged into text segment: */
   PROVIDE (__executable_start = SEGMENT_START("text-segment", 0x10000)); . = SEGMENT_START("text-segment", 0x10000) + SIZEOF_HEADERS;
+
+  /* CGRA section for input and output variables */
+  __cgra_vars_size = DEFINED(__cgra_vars_size) ? __cgra_vars_size : 0x1000;
+  PROVIDE(__cgra_vars_size = __cgra_vars_size);
 
   /* We don't do any dynamic linking so we remove everything related to it */
 /*
@@ -130,6 +134,17 @@ SECTIONS
   PROVIDE (__etext = .);
   PROVIDE (_etext = .);
   PROVIDE (etext = .);
+
+  .cgra_vars :
+  {
+   PROVIDE(__cgra_vars_start = .);
+    *(.cgra_vars)
+    . = ALIGN(4);
+    . = ALIGN(. != 0 ? 32 / 8 : 1);
+    . = __cgra_vars_size;
+    PROVIDE(__cgra_vars_end = .);
+    . = ALIGN(4);
+  } > ram1
 
   /* read-only sections */
   .rodata         :
