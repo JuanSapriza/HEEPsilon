@@ -51,7 +51,7 @@
 /****************************************************************************/
 
 /* Operation Configurations */
-#define ENABLE_PRINTF           0
+#define ENABLE_PRINTF           1
 #define ENABLE_DEBUG_PRINTF     0
 
 #define PRINT_ITERATION_VALUES  0

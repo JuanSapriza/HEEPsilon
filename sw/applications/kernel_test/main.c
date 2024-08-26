@@ -77,9 +77,9 @@
 
 static kcom_kernel_t *kernels[] = {
         // &conv_kernel,
-        &reve_kernel,
+        // &reve_kernel,
         // &bitc_kernel,
-        // &sqrt_kernel,
+        &sqrt_kernel,
         // &gsm_kernel,
         // &strs_kernel,
         // &sha_kernel,
