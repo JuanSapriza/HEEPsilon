@@ -8,19 +8,23 @@
 #define MIN_WORD    ((-32767)-1)
 #define MAX_WORD    ( 32767)
 
-int32_t gsm(int32_t *d){
+int gsm(int *dmax_ptr, int *d){
 
-    int32_t dmax = 0;
-    int32_t temp = 0;
+    int dmax = *dmax_ptr;
+    int temp = 0;
 
+    #pragma CGRA
     for (int k = 0; k <= 39; k++) {
         temp = d[k];
         temp = GSM_ABS( temp );
         if (temp > dmax) dmax = temp;
     }
 
-    return dmax;
+    *dmax_ptr = dmax;
+
+    return 0;
 }
+
 
 
 #endif // _CGRA_FUNCTION_H_

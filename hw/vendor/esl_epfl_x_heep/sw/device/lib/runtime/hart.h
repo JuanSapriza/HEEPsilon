@@ -22,6 +22,6 @@
  *
  * This function may behave as if it is a no-op.
  */
-inline void wait_for_interrupt(void) { asm volatile("wfi"); }
+static inline void wait_for_interrupt(void) { asm volatile("wfi"); }
 
 #endif  // OPENTITAN_SW_DEVICE_LIB_RUNTIME_HART_H_

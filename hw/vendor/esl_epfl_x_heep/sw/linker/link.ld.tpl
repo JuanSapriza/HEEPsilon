@@ -137,13 +137,12 @@ SECTIONS
 
   .cgra_vars :
   {
-   PROVIDE(__cgra_vars_start = .);
-    *(.cgra_vars)
-    . = ALIGN(4);
-    . = ALIGN(. != 0 ? 32 / 8 : 1);
-    . = __cgra_vars_size;
-    PROVIDE(__cgra_vars_end = .);
-    . = ALIGN(4);
+      PROVIDE(__cgra_vars_start = .);
+      *(.cgra_vars)  /* This will take all symbols from the .cgra_vars section in the order they are provided by the object files */
+      . = ALIGN(4);
+      . = __cgra_vars_size;
+      PROVIDE(__cgra_vars_end = .);
+      . = ALIGN(4);
   } > ram1
 
   /* read-only sections */

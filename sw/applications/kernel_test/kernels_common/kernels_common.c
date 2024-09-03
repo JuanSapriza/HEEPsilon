@@ -53,6 +53,8 @@
 #include "soc_ctrl.h"
 #include "core_v_mini_mcu.h"
 
+#include "mmio.h"
+
 /****************************************************************************/
 /**                                                                        **/
 /*                        DEFINITIONS AND MACROS                            */

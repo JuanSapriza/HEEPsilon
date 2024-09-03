@@ -40,6 +40,7 @@
 #include "fast_intr_ctrl.h"
 #include "csr.h"
 #include "stdasm.h"
+#include "hart.h"
 
 /****************************************************************************/
 /**                                                                        **/

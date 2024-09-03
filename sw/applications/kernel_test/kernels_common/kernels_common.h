@@ -60,7 +60,7 @@
 #define PRINT_LATEX             0
 #define PRINT_TABBED            0
 #define PRINT_PLOT              0
-#define PRINT_RESULTS           0
+#define PRINT_RESULTS           1
 #define PRINT_CGRA_RESULTS      0
 
 #define REPEAT_FIRST_INPUT      0
@@ -71,7 +71,7 @@
 
 #define EXECUTE_SOFTWARE        1
 #define MEASUREMENTS            1
-#define MEASURE_DEVIATION       1
+#define MEASURE_DEVIATION       0
 #define MEASURE_REPORTED        0
 #define MEASURE_RATIO           0
 
