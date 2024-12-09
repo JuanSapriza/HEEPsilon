@@ -44,6 +44,7 @@
 #include "kernels/sha/sha.h"
 #include "kernels/strsearch/strsearch.h"
 #include "kernels/sqrt/sqrt.h"
+#include "kernels/dotProd/dotprod.h"
 
 /****************************************************************************/
 /**                                                                        **/
@@ -79,11 +80,8 @@ static kcom_kernel_t *kernels[] = {
         // &reve_kernel,
         // &sqrt_kernel,
         // &gsm_kernel,
-        &sha_kernel,
-        // &bitc_kernel,
-        // &strs_kernel,
-        // &conv_kernel,
-        // &sha2_kernel,
+        // &sha_kernel,
+        &dotprod_kernel,
         // Add all other kernels here
     };
 

@@ -424,11 +424,11 @@ void kcom_printKernelStats( kcom_stats_t *stats  )
 #endif //MEASURE_RATIO
 #else
 #if EXECUTE_SOFTWARE
-    PRINTF("SOFT\t%d\n\r", stats->avg.sw );
+    // PRINTF("SOFT\t%d\n\r", stats->avg.sw );
 #endif //EXECUTE_SOFTWARE
-    PRINTF("CONF\t%d\n\r", stats->avg.conf );
-    PRINTF("REPO\t%d\n\r", stats->avg.repo );
-    PRINTF("CGRA\t%d\n\r", stats->avg.cgra );
+    // PRINTF("CONF\t%d\n\r", stats->avg.conf );
+    // PRINTF("REPO\t%d\n\r", stats->avg.repo );
+    // PRINTF("CGRA\t%d\n\r", stats->avg.cgra );
 #endif
 #endif //ENABLE_TIME_MEASURE
 }
@@ -482,7 +482,13 @@ __attribute__((optimize("O0"))) void kcom_waitingForIntr()
     uint32_t cycles = WATCHDOG_CYCLES;
     while( cgra_intr_flag == 0 && cycles > 0){ cycles--; }
 #else
-    while( cgra_intr_flag == 0 );
+    while(cgra_intr_flag == 0) {
+        CSR_CLEAR_BITS(CSR_REG_MSTATUS, 0x8);
+        if (cgra_intr_flag == 0) {
+            wait_for_interrupt();
+        }
+        CSR_SET_BITS(CSR_REG_MSTATUS, 0x8);
+    }
 #endif //WATCHDOG_CYCLES
 }
 

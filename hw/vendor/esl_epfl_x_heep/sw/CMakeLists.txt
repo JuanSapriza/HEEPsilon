@@ -305,7 +305,7 @@ endif()
 # specify the C standard
 set(COMPILER_LINKER_FLAGS "\
   -march=${CMAKE_SYSTEM_PROCESSOR} \
-  -w -O0 -g  -nostdlib  \
+  -w -O3 -g  -nostdlib  \
   -DHOST_BUILD \
   -D${CRT_TYPE} \
   -D${CRTO} \
